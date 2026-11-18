@@ -1,0 +1,2 @@
+scalar_symfony:
+    resource: '@ScalarSymfonyBundle/config/routes.php'

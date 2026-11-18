@@ -1,0 +1,6 @@
+scalar_symfony:
+    url: '/api/doc.json'
+    path: /scalar
+    configuration:
+        metaData:
+            title: Azeroth Armory API
