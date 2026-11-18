@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Character;
+use App\Enum\Faction;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,28 +17,26 @@ class CharacterRepository extends ServiceEntityRepository
         parent::__construct($registry, Character::class);
     }
 
-//    /**
-//     * @return Character[] Returns an array of Character objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Character[]
+     */
+    public function findWithFilters(?Faction $faction, ?string $class): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->join('c.race', 'r')->addSelect('r')
+            ->join('c.characterClass', 'cc')->addSelect('cc')
+            ->orderBy('c.level', 'DESC');
 
-//    public function findOneBySomeField($value): ?Character
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if ($faction !== null) {
+            $qb->andWhere('r.faction = :faction')
+                ->setParameter('faction', $faction);
+        }
+
+        if ($class !== null) {
+            $qb->andWhere('LOWER(cc.name) = LOWER(:class)')
+                ->setParameter('class', $class);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
