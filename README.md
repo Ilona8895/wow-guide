@@ -40,11 +40,11 @@ OpenAPI JSON: `/api/doc.json` · UI: `/scalar`
 
 ```bash
 # one-time test database setup
-dc sh -c 'APP_ENV=test bin/console doctrine:database:create --if-not-exists'
-dc sh -c 'APP_ENV=test bin/console doctrine:migrations:migrate --no-interaction'
-dc sh -c 'APP_ENV=test bin/console doctrine:fixtures:load --no-interaction'
+docker compose exec php sh -c 'APP_ENV=test bin/console doctrine:database:create --if-not-exists'
+docker compose exec php sh -c 'APP_ENV=test bin/console doctrine:migrations:migrate --no-interaction'
+docker compose exec php sh -c 'APP_ENV=test bin/console doctrine:fixtures:load --no-interaction'
 
-dc bin/phpunit
+docker compose exec php bin/phpunit
 ```
 
 ## Disclaimer
