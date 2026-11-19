@@ -33,6 +33,12 @@ final class CharacterController extends AbstractController
         );
     }
 
+    #[Route('/{id}', name: 'show', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function show(Character $character): JsonResponse
+    {
+        return $this->json(CharacterResponse::fromEntity($character));
+    }
+
     #[Route('', name: 'create', methods: ['POST'])]
     public function create(
         #[MapRequestPayload] CreateCharacterRequest $request,
