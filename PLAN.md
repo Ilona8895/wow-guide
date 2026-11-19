@@ -20,7 +20,7 @@ Fanowskie API w stylu World of Warcraft: rasy, klasy, postacie. Projekt do nauki
 
 - Szablon `dunglas/symfony-docker` (FrankenPHP), Symfony 8.1, PHP 8.5, Doctrine ORM 3, PostgreSQL 16.
 - Start: `docker compose up --wait`. Aplikacja: https://localhost
-- Adminer (podgląd bazy): http://localhost:8081 – System PostgreSQL, Server `database`, user `app`, hasło `!ChangeMe!`, baza `app`.
+- Adminer (podgląd bazy): http://localhost:8081 – System PostgreSQL, Server `database`, user `app`, hasło `password`, baza `wow_guide`.
 - Aliasy w `~/.zshrc`:
   - `sf` = `docker compose exec php bin/console` (np. `sf make:entity`)
   - `dc` = `docker compose exec php` (np. `dc composer require ...`)
