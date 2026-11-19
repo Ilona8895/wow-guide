@@ -1,6 +1,6 @@
 # WoW Forever Guide
 
-A Warcraft–style API for races, classes, and characters.  
+A World of Warcraft API for races, classes, and characters.  
 
 Stack: Symfony 8.1, Doctrine ORM, PostgreSQL, FrankenPHP (Docker), Nelmio OpenAPI + Scalar.
 
