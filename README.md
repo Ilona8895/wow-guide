@@ -22,7 +22,7 @@ docker compose exec php bin/console doctrine:migrations:migrate --no-interaction
 docker compose exec php bin/console doctrine:fixtures:load --no-interaction
 ```
 
-Shell aliases used locally: `sf` = `bin/console`, `dc` = `docker compose exec php`.
+Shell aliases used locally: `sf` = `docker compose exec php bin/console`, `dc` = `docker compose exec php`.
 
 ## Endpoints
 
