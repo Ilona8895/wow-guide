@@ -16,28 +16,16 @@ class RaceRepository extends ServiceEntityRepository
         parent::__construct($registry, Race::class);
     }
 
-//    /**
-//     * @return Race[] Returns an array of Race objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Race
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return Race[]
+     */
+    public function findAllWithAllowedClasses(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.allowedClasses', 'c')->addSelect('c')
+            ->orderBy('r.name', 'ASC')
+            ->addOrderBy('r.faction', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -14,6 +14,38 @@ final class CharacterControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
+    public function testListRacesReturns200(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/races');
+
+        $this->assertResponseStatusCodeSame(200);
+    }
+
+    public function testListClassesReturns200(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/classes');
+
+        $this->assertResponseStatusCodeSame(200);
+    }
+
+    public function testShowReturns200(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/characters/1');
+
+        $this->assertResponseStatusCodeSame(200);
+    }
+
+    public function testShowMissingReturns404(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/characters/99999');
+
+        $this->assertResponseStatusCodeSame(404);
+    }
+
     public function testCreateValidCharacterReturns201(): void
     {
         $client = static::createClient();

@@ -29,7 +29,10 @@ Shell aliases used locally: `sf` = `bin/console`, `dc` = `docker compose exec ph
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/api/characters` | List characters (filters: `?faction=horde&class=druid`) |
+| GET | `/api/characters/{id}` | Character details (404 if missing) |
 | POST | `/api/characters` | Create a character |
+| GET | `/api/races` | List races with allowed classes |
+| GET | `/api/classes` | List classes with armor types |
 
 OpenAPI JSON: `/api/doc.json` · UI: `/scalar`
 
